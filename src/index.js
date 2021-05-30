@@ -1,33 +1,28 @@
-// OO solution
+
 document.addEventListener("DOMContentLoaded", () => {
-  // initialize taskList class
-  const taskList = new TaskList();
-  //grab all the necessary DOM elements
+  
+  const newTask = document.getElementById(`new-task-description`)
 
-  //form and relevant input fields
-  const newTaskForm = document.getElementById("create-task-form");
-  const newTaskDescription = document.getElementById("new-task-description");
-  const newTaskPriority = document.getElementById("new-task-priority");
+  console.log(`test`)
+  
+  const createTaskForm = document.getElementById(`create-task-form`)
 
-  //ul where new tasks will live on the DOM
-  const taskUl = document.getElementById("tasks");
+  const createTaskButton = document.getElementById(`task-button`)
+  
+  
 
-  const renderApp = () => (taskUl.innerHTML = taskList.renderTasks());
-  //attach event listeners
+  createTaskButton.addEventListener("click", (e) => {
+    e.preventDefault()
 
-  newTaskForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    taskList.createNewTask(newTaskDescription.value);
-    // reset form
-    e.target.reset();
-    renderApp();
-  });
+    const toDoItem = document.createElement(`li`)
 
-  taskUl.addEventListener("click", (e) => {
-    if (e.target.nodeName === "BUTTON") {
-      taskList.deleteTask(e.target.dataset.description);
-      renderApp();
-    }
-  });
-});
+    tasks.appendChild(toDoItem);
+
+    toDoItem.innerHTML = newTask.value
+
+    console.log(newTask)
+  
+  }) 
+  
+})
 
